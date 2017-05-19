@@ -1,0 +1,19 @@
+C006 000 jump to start position **
+0013 001 int n (number of lines) **
+0000 002 int i (counter)
+0000 003 int 0
+0001 004 int 1
+3000 005 load command
+3001 006 load n
+6002 007 subtract i
+D012 008 if (n=i) exit loop **
+3005 009 create a load command
+5002 00A add i
+400C 00B store load command **
+0000 00C execute load command
+1800 00D print (as a hex) the what's at line i
+3002 00E load i
+5004 00F add 1
+4002 010 store i+1
+C006 011 jump to start position **
+0000 012 halt

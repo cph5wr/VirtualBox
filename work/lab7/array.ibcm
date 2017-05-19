@@ -1,0 +1,33 @@
+C00A 000 jump to start in order to skip around the variables
+001B 001 int a (start position of the array)
+0006 002 int n (size of array)
+0000 003 int i (counter)
+0000 004 int m (max)
+3000 005 load command
+0001 006 int 1
+3003 007 load i
+5006 008 i++
+4003 009 store new i
+3002 00A load n
+6003 00B subtract i from n
+D018 00C if (n-i==0) exit the loop forever
+3005 00D load the load command
+5001 00E add a
+5003 00F add i
+4011 010 store the entire command
+0000 011 entire command goes here
+6004 012 subtract the max from a[i]
+D007 013 if (max==a[i]) begin the loop again (notice it's from a new spot (i++))
+E007 014 if (max>a[i]) begin the loop again (as above)
+5004 015 add max to get back to a[i]
+4004 016 store a[i] as max
+C007 017 jump to the begining of the loop (as above)
+3004 018 load max
+1800 019 print (as a hex) the maximum value
+0000 01A halt
+0001 01B a[0]
+000A 01C a[1]
+0010 01D a[2]
+0005 01E a[3]
+000F 01F a[4]
+0099 020 a[5]

@@ -1,0 +1,83 @@
+C00C 000 jump to start
+0005 001 int n (size of array)
+004E 002 int a (start position of array) <-- change later bla=031
+0000 003 int i (counter)
+0000 004 int j (counter)
+0000 005 temp
+0001 006 int 1 (one)
+3000 007 load command
+0000 008 int a+j (location of a[j])
+0000 009 int a+j-1 (location of a[j-1])
+4000 00A store command
+0000 00B temp2
+3001 00C start loop load n
+6003 00D subtract i
+E02D 00E if (n<i) leave first loop forever <-- change later bla=02D
+D02D 00F if (n=i) leave first loop forever <-- change later
+3001 010 load n
+6006 011 subtract 1
+4004 012 store j=n-1
+3004 013 start second loop load j
+6003 014 subtract i
+E029 015 if (j<i) leave second loop forever <-- change later bla=029
+D029 016 if (j=i) leave second loop forever <-- change later
+3007 017 load load command
+5002 018 add a
+5004 019 add j
+6006 01A subtract 1
+401C 01B store command below
+0000 01C run stored command
+4005 01D store value of a[j-1] at temp
+3007 01E load load command
+5002 01F add a
+5004 020 add j
+4022 021 store command below
+0000 022 run stored command
+6005 023 subtract temp
+E02E 024 if (a[j]<a[j-1]) leave the loop to swap elements
+3004 025 load j
+6006 026 subtract 1
+4004 027 store j=j-1
+C013 028 jump to start of second loop
+3003 029 (exit second loop here) load i
+5006 02A add 1
+4003 02B store i=i+1
+C00C 02C jump to start of first loop
+0000 02D (exit first loop here) halt
+3007 02E (swap here) load load command
+5002 02F add a
+5004 030 add j
+4032 031 store command below
+0000 032 run stored command
+4005 033 store a[j] at temp
+3007 034 load load command
+5002 035 add a
+5004 036 add j
+6006 037 subtract 1
+4040 038 store command below
+3002 039 load a
+5004 03A add j
+4008 03B store a+j
+3002 03C load a
+5004 03D add j
+6006 03E subtract 1
+4009 03F store a+j-1
+0000 040 run stored command
+400B 041 store a[j-1] at temp2
+300A 042 load store command
+5009 043 add a+j-1
+4046 044 store store command
+3005 045 load temp
+0000 046 run stored command (this stores a[j] at a+j-1)
+300A 047 load store command
+5008 048 add a+j
+404B 049 store store command
+300B 04A load temp2
+0000 04B run stored command (this stores a[j-1] at a+j)
+C025 04C jump back into loop
+0000 04D blank space
+0001 04E a[0]
+0010 04F a[1]
+0005 050 a[2]
+0020 051 a[3]
+000A 052 a[4]

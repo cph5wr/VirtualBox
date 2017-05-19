@@ -1,0 +1,42 @@
+C00A 000 jump to start in order to skip around the variables
+001C 001 int a (start position of the array (mem 01C)) 
+0006 002 int n (size of the array)
+0000 003 int i
+0000 004 int max
+6000 005 subtract 
+0001 006 int 1
+3000 007 load
+0000 008
+0000 009
+3002 00A load n
+6003 00B subtract i from n
+E019 00C if (n-i<0) exit the loop and proceed to print the max, else continue
+D019 00D if (n-i==0) exit the loop and proceed to print the max, else continue
+3005 00E load subtract command
+5001 00F add a
+5003 010 add i
+4015 011 store complete subtract command in mem 015
+3003 012 load i
+5006 013 increase i by 1
+3004 014 load max
+0000 015 the complete subtract command goes here
+E022 016 if (max-a[i]<0) [with old i] then exit the loop to change the max, then reenter the loop, else continue
+C00A 017 jump to the start of the loop
+0000 018
+3004 019 load max
+1800 01A print (as a hex) the max value
+0000 01B halt
+0001 01C a[0] is 1
+000A 01D a[1] is A
+0010 01E a[2] is 10
+0005 01F a[3] is 5
+000F 020 a[4] is F
+0099 021 a[5] is 99
+3007 022 load load command
+5001 023 add a
+5003 024 add i
+6006 025 subtract 1 (I do this because I already increased i by 1 in my loop, I know it's sloppy, but whatever)
+4027 026 store the load command in mem 026
+0000 027 complete load command goes here
+4004 028 store a[i] (or I guess a[i-1]) as the new max value
+C00A 029 jump to the start of the loop

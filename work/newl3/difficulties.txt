@@ -1,0 +1,5 @@
+// Colin Harfst
+// 9/12/16
+// difficulties.txt
+
+I ran into several difficulties while creating my stack class using my previously made linked list class. First, I struggled to implement some functions easily without being able to access the private variables in the list and listNode classes. To ease my struggle, I simply made the stack class a friend class of the two above classes. Another problem I ran into was that "stack was ambiguous" according to clang++. This is because namespace std has a stack class (I presume). To fix this, I just had to change my class name to "Stack" with a capital S.

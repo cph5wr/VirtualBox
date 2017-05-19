@@ -1,0 +1,28 @@
+C00A 000 jump to start to skip around variables
+0000 001 this is where we will store int a
+0000 002 this is where we will store int b
+0000 003 this is where we will store int c
+0000 004
+0000 005 I am using this space to say my name is Colin Harfst,
+0000 006 my computing ID is cph5wr,
+0000 007 and I am in lab section 103.
+0000 008
+0000 009
+1000 00A start here by reading in (as a hex) int a
+4001 00B store int a in mem 001
+1000 00C read in (as a hex) int b
+4002 00D store int b in mem 002
+1000 00E read in (as a hex) int c
+4003 00F store int c in mem 003
+3001 010 load a
+5002 011 add b to a
+5003 012 add c to a+b
+D015 013 if a+b+c is 0, then jump to mem 015
+C00A 014 else go to mem 00A and start over
+3001 015 load a
+1800 016 print (as a hex) int a
+3002 017 load b
+1800 018 print (as a hex) int b
+3003 019 load c
+1800 01A print (as a hex) int c
+0000 01B halt

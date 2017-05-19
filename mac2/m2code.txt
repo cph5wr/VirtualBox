@@ -1,0 +1,13 @@
+R=QQ[v,w,x,y,z];
+numGen=I->#(I_*);
+ht=I->(sort(apply(primaryDecomposition(I),numGen)))#0;
+isSFMon=m->if (m%v^2==0 or m%w^2==0 or m%x^2==0 or m%y^2==0 or m%z^2==0) then false else true;
+orBool=(a,b)->a or b;
+hasSFGen=I->fold(for i when i<#(I_*) list isSFMon((I_*)#i), orBool);
+isKonig=I->if I==ideal(1_R) then true else hasSFGen(I^(ht(I)));
+app=(i,j)->i|j;
+andBool=(b,v)->b and v;
+S={v,w,x,y,z,v*w,v*x,v*y,v*z,w*x,w*y,w*z,x*y,x*z,y*z,v*w*x,v*w*y,v*w*z,v*x*y,v*x*z,v*y*z,w*x*y,w*x*z,w*y*z,x*y*z};
+isProper=I->fold(andBool,fold(app,for i when i<numGen(I) list (for j when j<numGen(I) list (if i<=j then true else if ((I_i)%(I_j)==0) or ((I_i)%(I_j)==0) then false else true))));
+fold(app,fold(app,for i when i<25 list (for j from i to 24 list (for k from j to 24 list (if (not(isProper(ideal(S#i,S#j,S#k)))) then "" else if (isKonig(ideal(S#i,S#j,S#k))) then "" else ideal(S#i,S#j,S#k))))));
+fold(app,fold(app,fold(app,for i when i<25 list (for j from i to 24 list (for k from j to 24 list (for l from k to 24 list (if (not(isProper(ideal(S#i,S#j,S#k,S#l)))) then "" else if (isKonig(ideal(S#i,S#j,S#k,S#l))) then "" else ideal(S#i,S#j,S#k,S#l))))))));

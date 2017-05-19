@@ -1,0 +1,7 @@
+// Colin Harfst
+// 9/11/16
+// unix.questions.txt
+
+Are pipes only useful in the sense that they save time, typing, and perhaps file space? Is there anything that can only be done with pipes?
+
+Also, obligatory "Where does the name 'grep' come from?"
